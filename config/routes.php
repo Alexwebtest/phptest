@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     '' => [
         'controller' => 'main',
         'action' => 'index'
@@ -34,6 +33,4 @@ return [
         'controller' => 'user',
         'action' => 'logout'
     ],
-
-
 ];

@@ -4,8 +4,8 @@ namespace core;
 
 use controllers\ErrorsController;
 
-class Router {
-
+class Router
+{
     protected $routes = [];
     protected $params = [];
 
@@ -15,7 +15,8 @@ class Router {
      * перебирает в цикле содержимое файла routes.php и добавляет в переменную $routes;
      *
      */
-    function __construct() {
+    function __construct()
+    {
         $arr = require 'config/routes.php';
         foreach ($arr as $key => $value) {
             $this->add($key,$value);
@@ -29,7 +30,8 @@ class Router {
      * @param $params array - routes.php значение - контроллер и action
      *
      */
-    function add($route,$params) {
+    function add($route,$params)
+    {
         $route = '#^'.$route.'$#'; // # - разделитель, можно заменить на ~
         $this->routes[$route] = $params;
     }
@@ -40,10 +42,11 @@ class Router {
      *
      * @return boolean;
      */
-    private function match() {
+    private function match()
+    {
         $url = trim($_SERVER['REQUEST_URI'],'/');
         foreach ($this->routes as $route => $params) {
-            if(preg_match($route,$url,$matches)) {
+            if (preg_match($route,$url,$matches)) {
                 $this->params = $params;
                 return true;
             }
@@ -54,8 +57,9 @@ class Router {
     /**
      *  создаёт новый экземпляр контроллера и выполняет action
      */
-    function run() {
-        if($this->match()) {
+    function run()
+    {
+        if ($this->match()) {
             $path = 'controllers\\'.ucfirst($this->params['controller']).'Controller';
             if(class_exists($path)) {
                 $action = $this->params['action'].'Action';
@@ -80,5 +84,4 @@ class Router {
             $controller->errorAction(404);
         }
     }
-
 }

@@ -1,13 +1,15 @@
 <?php
 
 namespace models;
+
 use core\Model;
 
-class UserModel extends Model {
-
-    public function addNewUser($login,$password) {
+class UserModel extends Model
+{
+    public function addNewUser($login, $password)
+    {
         $user_exists = $this->isUserExists($login);
-        if($user_exists){
+        if ($user_exists) {
             return false;
         } else {
             $password = md5($password);
@@ -16,16 +18,18 @@ class UserModel extends Model {
         }
     }
 
-    public function isUserExists($login) {
+    public function isUserExists($login)
+    {
         $result = $this->db->query("SELECT * FROM `users` WHERE login = '$login'");
-        if($result) {
+        if ($result) {
             return true;
         } else {
             return false;
         }
     }
 
-    public function loginUser($login,$password) {
+    public function loginUser($login, $password)
+    {
         $password = md5($password);
         $result = $this->db->query("SELECT `ID` FROM `users` WHERE login = '$login' AND password = '$password'");
         if(empty($result)){
@@ -34,5 +38,4 @@ class UserModel extends Model {
             return $result[0]["ID"];
         }
     }
-
 }
