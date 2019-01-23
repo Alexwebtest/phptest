@@ -1,11 +1,14 @@
 <?php
 
 namespace controllers;
+
 use core\Controller;
 
-class AccountController extends Controller {
+class AccountController extends Controller
+{
 
-    public function loginAction() {
+    public function loginAction()
+    {
         $data_array = [
             'info' => $this->get_site_info(),
             'page_title' => 'Авторизация'
@@ -13,12 +16,12 @@ class AccountController extends Controller {
         $this->view->render($data_array);
     }
 
-    public function registerAction() {
+    public function registerAction()
+    {
         $data_array = [
             'info' => $this->get_site_info(),
             'page_title' => 'Регистрация',
         ];
         $this->view->render($data_array);
     }
-
 }

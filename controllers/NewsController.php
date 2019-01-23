@@ -1,11 +1,13 @@
 <?php
 
 namespace controllers;
+
 use core\Controller;
 
-class NewsController extends Controller {
-
-    public function singleAction($id) {
+class NewsController extends Controller
+{
+    public function singleAction($id)
+    {
         $news_page = $this->model->get_post($id);
         $data_array = [
             'info' => $this->get_site_info(),
@@ -15,8 +17,8 @@ class NewsController extends Controller {
         $this->view->render($data_array);
     }
 
-    public function listAction() {
+    public function listAction()
+    {
         echo 'all news list page';
     }
-
 }

@@ -1,11 +1,14 @@
 <?php
 
 namespace controllers;
+
 use core\Controller;
 
-class MainController extends Controller {
+class MainController extends Controller
+{
 
-    public function indexAction() {
+    public function indexAction()
+    {
         $main_page = $this->model->get_post(1);
         $data_array = array(
             'info' => $this->get_site_info(),
@@ -16,5 +19,4 @@ class MainController extends Controller {
 
         $this->view->render($data_array);
     }
-
 }

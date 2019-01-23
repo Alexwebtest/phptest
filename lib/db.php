@@ -1,13 +1,16 @@
 <?php
 
 namespace lib;
+
 use PDO;
 use PDOException;
-class db {
 
+class db
+{
     protected $db;
 
-    public function __construct() {
+    public function __construct()
+    {
         $config = require 'config/db.php';
         try {
             $this->db = new PDO('mysql:host='.$config['host'].';dbname='.$config['dbname'],$config['dbuser'],$config['pass']);
@@ -17,9 +20,10 @@ class db {
         }
     }
 
-    public function query($sql,$params = []) {
+    public function query($sql, $params = [])
+    {
         $stmt = $this->db->prepare($sql);
-        if(!empty($params)){
+        if (!empty($params)) {
             foreach ($params as $key => $value) {
                 $stmt->bindValue(':'.$key,$value);
             }
@@ -32,5 +36,4 @@ class db {
         return $result;
         */
     }
-
 }
