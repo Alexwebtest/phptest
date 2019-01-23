@@ -15,5 +15,4 @@
         </div>
         <div id="result"></div>
     </form>
-
 </div>
