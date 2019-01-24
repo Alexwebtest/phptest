@@ -1,4 +1,4 @@
-<div class="content">
+<div class="container">
     <h1 class="title"><?= $page_title; ?></h1>
     <form method="POST" id="register">
         <div class="form-item">

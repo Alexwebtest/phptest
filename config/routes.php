@@ -1,10 +1,12 @@
 <?php
 
 return [
+
     '' => [
         'controller' => 'main',
         'action' => 'index'
     ],
+
     'news/([0-9]+)' => [
         'controller' => 'news',
         'action' => 'single'
@@ -13,6 +15,7 @@ return [
         'controller' => 'news',
         'action' => 'list'
     ],
+
     'account/login' => [
         'controller' => 'account',
         'action' => 'login'
@@ -21,6 +24,12 @@ return [
         'controller' => 'account',
         'action' => 'register'
     ],
+
+    'admin' => [
+        'controller' => 'admin',
+        'action' => 'index'
+    ],
+    /* ajax */
     'user/registration' => [
         'controller' => 'user',
         'action' => 'registration'

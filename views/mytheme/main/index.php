@@ -1,5 +1,5 @@
-<div class="content">
-    <h1><?php echo $page_title ?></h1>
+<div class="container">
+    <h1 class="title"><?php echo $page_title ?></h1>
     <?php echo $post_content; ?>
     <hr/>
     <?php if(!empty($allPosts)) : ?>

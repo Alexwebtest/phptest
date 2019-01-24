@@ -7,11 +7,13 @@ abstract class Controller
     public $route;
     public $view;
     public $model;
+    public $layout = 'main';
 
     public function __construct($route)
     {
         $this->route = $route;
-        $this->view = new View($route); // создаётся экзепляр класса View
+        $layout = $this->layout;
+        $this->view = new View($route, $layout); // создаётся экзепляр класса View
         $this->model = $this->loadModel($route['controller']); // $this->model = new models\IndexModel; // создаётся экзепляр класса Model
     }
 

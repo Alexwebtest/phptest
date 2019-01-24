@@ -7,11 +7,13 @@ class View
     public $path;
     public $template = 'mytheme';
     public $route;
+    public $layout;
 
-    public function __construct($route)
+    public function __construct($route, $layout)
     {
         $this->route = $route;
         $this->path = '/'.$route['controller'].'/'.$route['action'];
+        $this->layout = $layout;
     }
 
     public function render($data_array = [])
@@ -19,9 +21,16 @@ class View
         $path = 'views/'.$this->template.$this->path.'.php'; // путь к файлу вьюхи
         if (file_exists($path)) {
             extract($data_array);
+            ob_start();
+            require $path;
+            $content = ob_get_clean();
+            require 'views/'.$this->template.'/layouts/'.$this->layout.'.php';
+            /*
+            extract($data_array);
             require 'views/'.$this->template.'/general/header.php';
             require $path;
             require 'views/'.$this->template.'/general/footer.php';
+            */
         } else {
             echo 'view not found: '.$this->path;
         }

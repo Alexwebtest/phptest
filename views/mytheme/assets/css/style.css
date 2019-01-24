@@ -8,7 +8,7 @@ ul {
 }
 
 body {
-    background: aliceblue;
+    background: #E7EAED;
     font-family: -system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
 }
 
@@ -20,10 +20,14 @@ a {
 /* ---------- Header ---------- */
 
 header {
+    background: #333333;
+}
+
+header .container {
     padding: 15px 30px;
     display: flex;
     justify-content: space-between;
-    background: #333333;
+
 }
 
 header .title {
@@ -45,14 +49,14 @@ header ul.menu {
     width: 50%;
 }
 
-ul.menu li {
+header ul.menu li {
     border: 2px solid #a05158;
     border-radius: 5px;
     margin-right: 5px;
     align-self: center;
 }
 
-ul.menu li:hover {
+header ul.menu li:hover {
     background: #a05158;
 }
 
@@ -88,12 +92,13 @@ header .auth a:hover {
 }
 
 /* ---------- Content ---------- */
-.content {
-    width: 960px;
+
+.container {
+    width: 1170px;
     margin: 0 auto;
 }
 
-.content .title {
+.container .title {
     font-size: 28px;
     text-transform: uppercase;
     font-weight: bold;
@@ -128,4 +133,10 @@ header .auth a:hover {
 
 .form-item .btn:hover {
     background: rgba(255, 255, 255, 0.25);
+}
+
+/* ---------- Footer ---------- */
+
+footer .container {
+    padding: 30px;
 }

@@ -19,9 +19,18 @@
                 <p>Hello, <?php echo $username; ?></p>
                 <a class="logout" href="#">Выйти</a>
             <?php else :*/ ?>
-                <a class="login" href="/account/login/">Авторизация</a>
-                <a class="logout" href="#">Выйти</a>
+            <a class="login" href="/account/login/">Авторизация</a>
+            <a class="logout" href="#">Выйти</a>
             <?php // endif; ?>
         </div>
     </div>
 </header>
+<?= $content; ?>
+<footer>
+    <hr/>
+    <div class="container"><?php echo date('H:i d.m.Y'); ?></div>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="/views/mytheme/assets/js/scripts.js"></script>
+</body>
+</html>

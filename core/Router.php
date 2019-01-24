@@ -59,6 +59,10 @@ class Router
      */
     function run()
     {
+        $error_route = [
+            'controller' => 'errors',
+            'action' => 'error'
+        ];
         if ($this->match()) {
             $path = 'controllers\\'.ucfirst($this->params['controller']).'Controller';
             if(class_exists($path)) {
@@ -67,19 +71,21 @@ class Router
                     $controller = new $path($this->params);
                     $controller->$action();
                 } else { // если существует класс, но не существует метод
-                    $controller = new $path($this->params);
-                    $controller->$action();
+                    $controller = new ErrorsController($error_route);
+                    $controller->errorAction(404);
+                    //$controller = new $path($this->params);
+                    //$controller->$action();
                 }
             } else { // если не существует класс
+                $controller = new ErrorsController($error_route);
+                $controller->errorAction(404);
+                /*
                 $action = $this->params['action'].'Action';
                 $controller = new $path($this->params);
                 $controller->$action();
+                */
             }
         } else { //если нет пути в routes[]
-            $error_route = [
-              'controller' => 'errors',
-              'action' => 'error'
-            ];
             $controller = new ErrorsController($error_route);
             $controller->errorAction(404);
         }

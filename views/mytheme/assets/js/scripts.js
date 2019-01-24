@@ -1,6 +1,8 @@
 (function ( $ ) {
 jQuery(document).ready(function () {
 
+    $("#game-container iframe").css("height", "270px");
+
     // registration
     var regForm = $("form#register");
     regForm.on("click", "button", function (e) {

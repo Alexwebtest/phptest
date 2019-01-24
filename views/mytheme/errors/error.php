@@ -1,3 +1,5 @@
-<h1><?php echo $page_title; ?></h1>
+<div class="container">
+    <h1><?php echo $page_title; ?></h1>
 
-<p>This is error page.</p>
+    <p>This is error page.</p>
+</div>
