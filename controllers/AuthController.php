@@ -4,7 +4,7 @@ namespace controllers;
 
 use core\Controller;
 
-class UserController extends Controller
+class AuthController extends Controller
 {
     public function registrationAction()
     {
@@ -54,10 +54,13 @@ class UserController extends Controller
                 $result = $this->model->loginUser($login, $password);
                 if ($result) {
                     $_SESSION['user_id'] = $result;
-                    if ($result == 1) {
-                        $_SESSION['admin'] = true;
-                    }
-                    echo json_encode(array('success' => true, 'user_id' => $result));
+                    echo json_encode(
+                        array(
+                            'success' => true,
+                            'user_id' => $result,
+                            'redirect' => $this->model->get_site_url().'/cabinet/',
+                        )
+                    );
                 } else {
                     echo json_encode(array('success' => false, 'result' => $result));
                 }
@@ -71,8 +74,11 @@ class UserController extends Controller
     public function logoutAction()
     {
         if (isset($_POST['logout'])) {
-            session_start();
             session_destroy();
+            echo json_encode(array(
+                'success' => true,
+                'redirect' => $this->model->get_site_url()
+            ));
         }
     }
 

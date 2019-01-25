@@ -9,7 +9,7 @@ ul {
 
 body {
     background: #E7EAED;
-    font-family: -system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-family: "Segoe UI",Helvetica,Arial,sans-serif;
 }
 
 a {
@@ -30,14 +30,29 @@ header .container {
 
 }
 
-header .title {
-    font-style: italic;
+header .container > div:first-child {
     width: 30%;
     align-self: center;
+}
+header .container > div:nth-child(2) {
+    width: 50%;
+    align-self: center;
+}
+header .container > div:last-child {
+    width: 20%;
+    align-self: center;
+}
+
+header .title {
+    font-style: italic;
 }
 
 header .title a {
     color: crimson;
+}
+
+header .description {
+    color: #fff;
 }
 
 header .title a:hover {
@@ -46,7 +61,7 @@ header .title a:hover {
 
 header ul.menu {
     display: flex;
-    width: 50%;
+
 }
 
 header ul.menu li {
@@ -73,22 +88,25 @@ header ul.menu li:hover a {
 }
 
 header .auth {
-    width: 20%;
-    align-self: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+header .auth p {
+    color: #fff;
 }
 
 header .auth a {
     display: inline-block;
-    border-radius: 10px;
-    border: 3px solid #eee;
+    /*border-radius: 10px;
+    border: 3px solid #eee;*/
     text-align: center;
-    padding: 15px;
     color: #eee;
 }
 
 header .auth a:hover {
     color: #a05158;
-    border: 3px solid #a05158;
+    /*border: 3px solid #a05158;*/
 }
 
 /* ---------- Content ---------- */
@@ -98,13 +116,12 @@ header .auth a:hover {
     margin: 0 auto;
 }
 
-.container .title {
+.content .title {
     font-size: 28px;
     text-transform: uppercase;
     font-weight: bold;
     color: #a05158;
-    margin-top: 15px;
-    margin-bottom: 20px;
+    margin: 20px 0;
 }
 
 .form-item {

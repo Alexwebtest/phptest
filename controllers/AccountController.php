@@ -9,19 +9,14 @@ class AccountController extends Controller
 
     public function loginAction()
     {
-        $data_array = [
-            'info' => $this->get_site_info(),
-            'page_title' => 'Авторизация'
-        ];
-        $this->view->render($data_array);
+        $this->data['title'] = 'Авторизация';
+        $this->view->render($this->data);
     }
 
     public function registerAction()
     {
-        $data_array = [
-            'info' => $this->get_site_info(),
-            'page_title' => 'Регистрация',
-        ];
-        $this->view->render($data_array);
+
+        $this->data['title'] = 'Регистрация';
+        $this->view->render($this->data);
     }
 }

@@ -1,5 +1,5 @@
 <div class="container">
-    <h1 class="title"><?= $page_title; ?></h1>
+    <h1 class="title"><?= $title; ?></h1>
     <form method="POST" id="register">
         <div class="form-item">
             <input type="text" name="login" placeholder="Enter login" >

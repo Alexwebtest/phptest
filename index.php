@@ -12,6 +12,8 @@ spl_autoload_register(function($class) {
     }
 });
 
+date_default_timezone_set('Europe/Kiev');
+
 session_start();
 
 $router = new Router;

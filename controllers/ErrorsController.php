@@ -9,11 +9,7 @@ class ErrorsController extends Controller
 
     public function errorAction($code)
     {
-        $data_array = array(
-            'info' => $this->get_site_info(),
-            'page_title' => 'Error '.$code,
-        );
-
-        $this->view->render($data_array);
+        $this->data['title'] = 'Error '.$code;
+        $this->view->render($this->data);
     }
 }

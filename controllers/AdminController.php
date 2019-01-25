@@ -10,11 +10,14 @@ class AdminController extends Controller
     public $layout = 'admin';
 
     public function indexAction() {
-        $data_array = [
-            'info' => $this->get_site_info(),
-            'page_title' => 'Админка'
-        ];
-        $this->view->render($data_array);
+        $this->data['title'] = 'Админка';
+        $this->view->render($this->data);
     }
+
+    public function optionsAction() {
+        $this->data['title'] = 'Site options';
+        $this->view->render($this->data);
+    }
+
 
 }

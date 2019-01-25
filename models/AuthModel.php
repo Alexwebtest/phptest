@@ -4,7 +4,7 @@ namespace models;
 
 use core\Model;
 
-class UserModel extends Model
+class AuthModel extends Model
 {
     public function addNewUser($login, $password)
     {

@@ -16,9 +16,9 @@ abstract class Model
     public function get_site_info()
     {
         $output = [];
-        $output['site_title'] = $this->get_site_title();
-        $output['site_description'] = $this->get_site_description();
-        $output['site_url'] = $this->get_site_url();
+        $output['title'] = $this->get_site_title();
+        $output['description'] = $this->get_site_description();
+        $output['url'] = $this->get_site_url();
         return $output;
     }
 
@@ -51,7 +51,7 @@ abstract class Model
 
     public function get_post($id)
     {
-        $result = $this->db->query("SELECT * FROM posts where ID = $id");
+        $result = $this->db->query("SELECT * FROM posts WHERE ID = $id");
         if(!empty($result)) {
             $output = $result[0];
         } else {
@@ -62,7 +62,26 @@ abstract class Model
 
     public function get_template_name()
     {
-        $result = $this->db->query("SELECT value FROM options where name = 'template'");
+        $result = $this->db->query("SELECT value FROM options WHERE name = 'template'");
         return $result;
     }
+
+    public function get_user_info() {
+        if(isset($_SESSION['user_id'])) {
+            $userId = $_SESSION['user_id'];
+            $result = $this->db->query("SELECT login FROM users WHERE ID = $userId");
+            $userLogin = $result[0]["login"];
+            return [
+              'id' => $userId,
+              'login' => $userLogin,
+              'admin' => $userId == 1 ? true : false,
+            ];
+        } else {
+            return false;
+        }
+
+    }
+
+
+
 }

@@ -25,21 +25,26 @@ return [
         'action' => 'register'
     ],
 
-    'admin' => [
+    'cabinet' => [
         'controller' => 'admin',
         'action' => 'index'
     ],
+    'cabinet/options' => [
+        'controller' => 'admin',
+        'action' => 'options'
+    ],
     /* ajax */
-    'user/registration' => [
-        'controller' => 'user',
+    'ajax/registration' => [
+        'controller' => 'auth',
         'action' => 'registration'
     ],
-    'user/login' => [
-        'controller' => 'user',
+    'ajax/login' => [
+        'controller' => 'auth',
         'action' => 'login'
     ],
-    'user/logout' => [
-        'controller' => 'user',
+    'ajax/logout' => [
+        'controller' => 'auth',
         'action' => 'logout'
     ],
+    
 ];

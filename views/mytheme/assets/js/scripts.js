@@ -1,8 +1,6 @@
 (function ( $ ) {
 jQuery(document).ready(function () {
 
-    $("#game-container iframe").css("height", "270px");
-
     // registration
     var regForm = $("form#register");
     regForm.on("click", "button", function (e) {
@@ -50,7 +48,7 @@ jQuery(document).ready(function () {
         $.ajax({
             type: 'POST',
             dataType: 'json',
-            url: '/user/login',
+            url: '/ajax/login',
             data: {
                 'log_in': true,
                 'login': loginForm.find("input[name=login]").val(),
@@ -71,6 +69,11 @@ jQuery(document).ready(function () {
                 }
                 if(data.success) {
                     $("#result").append('<p>You have been logged in!</p>');
+
+                    setTimeout(function() {
+                        window.location.href = data.redirect;
+                    },2000);
+
                 } else {
                     $("#result").append('<p>Wrong password or username!</p>');
                 }
@@ -88,13 +91,16 @@ jQuery(document).ready(function () {
         $.ajax({
             type: 'POST',
             dataType: 'json',
-            url: '/user/logout',
+            url: '/ajax/logout',
             data: {
                 'logout': true
             },
             success: function(data){
                 console.log('ajax success');
                 console.log(data);
+                setTimeout(function() {
+                    window.location.href = data.redirect;
+                },2000);
             },
             error: function (data) {
                 console.log('ajax error');

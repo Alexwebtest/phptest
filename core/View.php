@@ -16,11 +16,11 @@ class View
         $this->layout = $layout;
     }
 
-    public function render($data_array = [])
+    public function render($data = [])
     {
         $path = 'views/'.$this->template.$this->path.'.php'; // путь к файлу вьюхи
         if (file_exists($path)) {
-            extract($data_array);
+            extract($data);
             ob_start();
             require $path;
             $content = ob_get_clean();
